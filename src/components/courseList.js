@@ -1,12 +1,13 @@
-import { Component } from "react";
-import CourseForm from "./courseForm";
+import React, { Component } from "react";
 
 class CourseList extends Component{
     render() { 
     return(
-        <div>
-            "hi"
-        </div>
+        <React.Fragment>
+            <li>
+                {this.props.details.name}
+            </li>
+        </React.Fragment>
     );
 }
 }

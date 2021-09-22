@@ -7,15 +7,25 @@ class App extends Component{
   state = {
     courses: [
       {name: "html"},
-      {name: "JS"}
+      {name: "JS"},
+      {name: "Python"}
     ] 
   }
   render(){
+
+  const {courses} = this.state;
+  const courselist = courses.map((course,index) => {
+    return     <CourseList details={course} key={index}/>
+  })
   return (
-    <div className="App">
+    <section className="App">
       <CourseForm/>
-      <CourseList/>
-    </div>
+      <ul>
+        <h3>
+        {courselist}
+        </h3>
+      </ul>
+    </section>
   );
 }
 }
