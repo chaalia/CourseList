@@ -11,6 +11,15 @@ class App extends Component{
       {name: "Python"}
     ] 
   }
+  //  update course
+  updateCourse = (e) => {
+    console.log(e.target.value)
+  }
+  // add course
+  addCourse = (e) => {
+    e.preventDefault()
+    console.log("add course")
+  }
   render(){
 
   const {courses} = this.state;
@@ -19,7 +28,7 @@ class App extends Component{
   })
   return (
     <section className="App">
-      <CourseForm/>
+      <CourseForm updateCourse={this.updateCourse} addCourse={this.addCourse}/>
       <ul>
         <h3>
         {courselist}
