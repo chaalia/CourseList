@@ -8,27 +8,38 @@ class App extends Component{
     courses: [
       {name: "html"},
       {name: "JS"},
-      {name: "Python"}
-    ] 
+      {name: "Python"},
+      {name: "Flutter"}
+    ],
+    current: ''
   }
   //  update course
   updateCourse = (e) => {
-    console.log(e.target.value)
+    this.setState({
+      current: e.target.value
+    })
   }
   // add course
   addCourse = (e) => {
-    e.preventDefault()
-    console.log("add course")
+    e.preventDefault();
+    let current = this.state.current;
+    let courses = this.state.courses;
+    courses.push({name: current});
+    this.setState(
+      {
+        courses,
+        current: ''} )
   }
+
   render(){
 
   const {courses} = this.state;
   const courselist = courses.map((course,index) => {
-    return     <CourseList details={course} key={index}/>
+    return <strong>  <CourseList details={course} key={index} update={this.handleChange}/></strong>
   })
   return (
     <section className="App">
-      <CourseForm updateCourse={this.updateCourse} addCourse={this.addCourse}/>
+      <CourseForm updateCourse={this.updateCourse} addCourse={this.addCourse} current={this.state.current}/>
       <ul>
         <h3>
         {courselist}
