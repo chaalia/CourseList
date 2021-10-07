@@ -30,16 +30,26 @@ class App extends Component{
         courses,
         current: ''} )
   }
+  // delete course
+  deleteCourse = (index) => {
+    let courses = this.state.courses;
+    courses.splice(index, 1)
+    this.setState(
+      {
+        courses:courses
+      }
+    )
+  }
 
   render(){
 
   const {courses} = this.state;
   const courselist = courses.map((course,index) => {
-    return <strong>  <CourseList details={course} key={index} update={this.handleChange}/></strong>
+    return <strong>  <CourseList details={course} key={index} index={index} update={this.handleChange} deleteCourse={this.deleteCourse}/></strong>
   })
   return (
     <section className="App">
-      <CourseForm updateCourse={this.updateCourse} addCourse={this.addCourse} current={this.state.current}/>
+      <CourseForm updateCourse={this.updateCourse} addCourse={this.addCourse} current={this.state.current} />
       <ul>
         <h3>
         {courselist}
