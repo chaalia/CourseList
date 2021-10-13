@@ -57,7 +57,12 @@ class App extends Component{
 
   const {courses} = this.state;
   const courselist = courses.map((course,index) => {
-    return <strong>  <CourseList details={course} key={index} index={index} update={this.handleChange} deleteCourse={this.deleteCourse} editCourse={this.editCourse}/></strong>
+    return (
+      courses.length>1 ? (<strong> 
+        <CourseList details={course} key={index} index={index} update={this.handleChange} deleteCourse={this.deleteCourse} editCourse={this.editCourse}/>
+      </strong>)
+       : "There is no item to show"
+       )
   })
   return (
     <section className="App">
