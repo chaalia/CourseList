@@ -29,7 +29,7 @@ class CourseList extends Component{
      renderUpdateForm = () => {
         return (
             <form onSubmit={this.updateCourseItem}>
-                <input type="text" ref={(v) => {this.input = v}} defaultValue={this.props.details.name}/>
+                <input type="text" ref={(v) => {this.input = v}} id="course" value={this} defaultValue={this.props.details.name}/>
                 <button>Update form</button>
             </form>
             

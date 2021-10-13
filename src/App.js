@@ -22,13 +22,19 @@ class App extends Component{
   // add course
   addCourse = (e) => {
     e.preventDefault();
+    if (e.target.name.value !=='') {
     let current = this.state.current;
     let courses = this.state.courses;
     courses.push({name: current});
     this.setState(
       {
         courses,
-        current: ''} )
+        current: ''} )}
+        else { 
+          return false
+         }
+         console.log(e.target.value)
+
   }
 
   // delete course
