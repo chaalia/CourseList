@@ -18,11 +18,18 @@ class CourseList extends Component{
              </ul>
         )
     }
+
+    // update course item
+    updateCourseItem = (e) => {
+        e.preventDefault();
+        this.props.editCourse(this.props.index, this.input.value);
+        this.toggleState()
+    }
     // render update form
      renderUpdateForm = () => {
         return (
-            <form>
-                <input type="text" defaultValue={this.props.details.name}/>
+            <form onSubmit={this.updateCourseItem}>
+                <input type="text" ref={(v) => {this.input = v}} defaultValue={this.props.details.name}/>
                 <button>Update form</button>
             </form>
             
